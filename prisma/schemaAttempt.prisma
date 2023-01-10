@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+datasource db {
+  provider = "postgresql"
+
+  url = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  uuid         String
+  email        String        @unique
+  firstName    String
+  lastName     String
+  password     String
+  role         UserRole
+  Applications Application[]
+}
+
+enum UserRole {
+  Applicant
+  Client
+  Admin
+}
+
+model Application {
+  id          String  @id @default(uuid())
+  listing     Listing @relation(fields: [listingId], references: [id])
+  listingId   String
+  applicantId String
+  applicate   User    @relation(fields: [userId], references: [id])
+  userId      String
+  coverLetter String
+  Offers      Offer[]
+  // Application   Application?  @relation(fields: [applicationId], references: [id])
+  // applicationId String?
+}
+
+enum ListingState {
+  Active
+  Ended
+}
+
+model Listing {
+  id           String        @id @default(uuid())
+  title        String
+  tags         String[]
+  description  String
+  requirements String[]
+  deadline     DateTime
+  created      DateTime      @default(now())
+  updated      DateTime
+  Application  Application[]
+  Offer        Offer[]
+}
+
+enum OfferState {
+  Pending
+  Accepted
+  Rejected
+}
+
+model Offer {
+  id            String      @id @default(uuid())
+  listingId     String
+  listing       Listing     @relation(fields: [listingId], references: [id])
+  applicationId String      @unique
+  application   Application @relation(fields: [applicantId], references: [id])
+  applicantId   Int
+  applicant     UserRole
+  state         OfferState
+}
+
+// extend user role applicant
+model Applicant {
+  id      String   @id @default(uuid())
+  skills  String[]
+  profile String
+  avatar  String
+  phone   String
+  //offers Offer[] @relation(fields: [], references: [uuid])
+}
+
+// extends user role client
+model Client {
+  id      String @id @default(uuid())
+  sector  String
+  company String
+  logo    String
+  phone   String
+}
