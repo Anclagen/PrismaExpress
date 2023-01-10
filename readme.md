@@ -5,30 +5,44 @@
 clone the repo in your desired manner.
 
 install dependencies
-`npm i`
+
+```
+npm i
+```
 
 you need a to configure a postgresql database and update the .env with the database url and port number like the example file.
 
+```
+DATABASE_URL="postgresql://username:password@databaseUrl:Port/databaseName?schema=schema"
+PORT=NUMBER
+```
+
 create the database tables with these
+
+```
 npx prisma migrate dev --name init
 
 npx prisma generate
+```
 
 Then start the server with nodemon using
 
+```
 npm run watch
+```
 
-then using postman or similar program for creating requests add your url
-Base url is probably http://localhost:PORT/ or http://127.0.0.1:PORT/
+Using postman or similar program for creating requests add your url Base url is probably `http://localhost:PORT/` or `http://127.0.0.1:PORT/`
 
-The /applications /listings /offers endpoints return a message, users get returns an array of users in your db and post requires you to add a content type of json and a raw json body with setup like so.
+The `/applications` `/listings` `/offers` endpoints return a message, `/users` get returns an array of users in your db and post requires you to add a content type of json and a raw json body with setup like so.
 
+```json
 {
-"firstName": "John",
-"lastName": "Doe",
-"email": "something@something.com",
-"password": "password"
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "something@something.com",
+  "password": "password"
 }
+```
 
 ## Useful Links, guides, documentation
 
