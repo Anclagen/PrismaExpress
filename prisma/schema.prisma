@@ -11,13 +11,42 @@ generator client {
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id           String        @id @default(uuid())
+  email        String        @unique
+  firstName    String
+  lastName     String
+  password     String
+  role         UserRole      @default(Applicant)
+  applications Application[]
+}
 
-  email String @unique
+enum UserRole {
+  Applicant
+  Client
+  Admin
+}
 
-  firstName String?
+model Application {
+  id          String  @id @default(uuid())
+  applicantId String
+  applicate   User    @relation(fields: [userId], references: [id])
+  userId      String
+  Offers      Offer[]
+}
 
-  lastName String?
+model Offer {
+  id            String      @id @default(uuid())
+  //listingId     String
+  //listing       Listing     @relation(fields: [listingId], references: [id])
+  applicationId String      @unique
+  application   Application @relation(fields: [applicantId], references: [id])
+  applicantId   String
+  applicant     UserRole
+  state         OfferState
+}
 
-  password String
+enum OfferState {
+  Pending
+  Accepted
+  Rejected
 }
