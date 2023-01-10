@@ -14,6 +14,8 @@ Prisma JS setup examples: https://github.com/prisma/prisma-examples/tree/latest/
 
 Prisma model guide: https://www.youtube.com/watch?v=RebA5J-rlwg
 
+How to create multiple routes in the same express.js server ? https://www.geeksforgeeks.org/how-to-create-multiple-routes-in-the-same-express-js-server/
+
 ## example setups
 
 https://github.com/prisma/prisma-examples/tree/latest/javascript
