@@ -1,12 +1,18 @@
 import express from "express";
-import { userRouter } from "./modules/user/routes.js";
-import { applicationRouter } from "./modules/app/routes.js";
+import { userRouter } from "./modules/users/routes.js";
+import { applicationRouter } from "./modules/applications/routes.js";
+import { listingsRouter } from "./modules/listings/routes.js";
+import { offersRouter } from "./modules/offers/routes.js";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-const PORT = 27017;
+const PORT = process.env.PORT;
 
-app.use("/user", userRouter);
-app.use("/application", applicationRouter);
+app.use("/users", userRouter);
+app.use("/applications", applicationRouter);
+app.use("/listings", listingsRouter);
+app.use("/offers", offersRouter);
 
 const server = app.listen(PORT, () => console.log(`🚀 Server ready at: http://localhost:27017`));
 
