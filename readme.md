@@ -10,6 +10,8 @@ Express guide: https://www.youtube.com/watch?v=SccSCuHhOw0&t
 
 Prisma docs: https://www.prisma.io/docs
 
+Prisma JS setup examples: https://github.com/prisma/prisma-examples/tree/latest/javascript
+
 Prisma model guide: https://www.youtube.com/watch?v=RebA5J-rlwg
 
 ## example setups
