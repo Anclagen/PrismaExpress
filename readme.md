@@ -22,6 +22,8 @@ https://github.com/prisma/prisma-examples/tree/latest/javascript/rest-express
 
 https://www.postgresql.org/
 
+https://www.postgresqltutorial.com/postgresql-getting-started/connect-to-postgresql-database/
+
 npx prisma migrate dev --name init
 
 npx prisma generate
