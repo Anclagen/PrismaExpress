@@ -60,6 +60,10 @@ Webtoken handling for logged in users:
 
 https://www.npmjs.com/package/jsonwebtoken
 
+Testings
+
+Jest
+
 Swagger generation:
 
 https://www.npmjs.com/package/swagger-jsdoc
