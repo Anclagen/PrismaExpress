@@ -20,7 +20,7 @@ app.use("/applications", applicationRouter);
 app.use("/listings", listingsRouter);
 app.use("/offers", offersRouter);
 
-const server = app.listen(PORT, () => console.log(`🚀 Server ready at: http://localhost:27017`));
+const server = app.listen(PORT, () => console.log(`🚀 Server ready at: http://localhost:${PORT}`));
 
 // app.use(express.json());
 
